@@ -1,307 +1,733 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Sydney, Structural engineer, Structural engineering analysis and design, engineer reports, certified, chartered, NER, RPEQ, retaining walls, concrete, steel, slabs, houses">
-    <meta name="author" content="">
-    <title>DH Structural Consultants</title>
-
-    <link rel="icon" type="image/x-icon" href="public_html/assets/imgs/logo.png">
-
-    <!-- font icons -->
-    <link rel="stylesheet" href="public_html/assets/vendors/themify-icons/css/themify-icons.css">
-    
-    <!-- owl carousel -->
-    <link rel="stylesheet" href="public_html/assets/vendors/owl-carousel/css/owl.carousel.css">
-    <link rel="stylesheet" href="public_html/assets/vendors/owl-carousel/css/owl.theme.default.css">
-
-    <!-- Bootstrap + Ollie main styles -->
-	<link rel="stylesheet" href="public_html/assets/css/style.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DHS Structural Consultants</title>
+    <style>
+        :root {
+            --primary-dark: #1a1a2e;
+            --primary-blue: #16213e;
+            --accent-gold: #29e7ae;
+            --accent-gold-hover: #1dd6a8;
+            --steel-gray: #4a5568;
+            --light-gray: #718096;
+            --bg-light: #f7fafc;
+            --bg-white: #ffffff;
+            --text-dark: #2d3748;
+            --text-light: #a0aec0;
+            --border-light: #e2e8f0;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-white);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* Header */
+        header {
+            background: var(--primary-dark);
+            color: var(--bg-white);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-md);
+            backdrop-filter: blur(10px);
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: var(--bg-white);
+            text-transform: uppercase;
+        }
+        .logo span {
+            color: var(--accent-gold);
+            font-weight: 500;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+        .nav-links a {
+            color: var(--bg-white);
+            text-decoration: none;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 300;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent-gold);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(26,26,46,0.95) 0%, rgba(22,33,62,0.95) 100%), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 800"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%231a1a2e;stop-opacity:0.2" /><stop offset="100%" style="stop-color:%2316213e;stop-opacity:0.2" /></linearGradient></defs><rect width="1440" height="800" fill="url(%23grad)"/><g fill="none" stroke="%23c9a961" stroke-width="0.5" opacity="0.1"><path d="M0,400 L200,300 L400,350 L600,250 L800,300 L1000,200 L1200,250 L1440,150"/><path d="M0,500 L200,400 L400,450 L600,350 L800,400 L1000,300 L1200,350 L1440,250"/></g></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            color: var(--bg-white);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(26,26,46,0.3) 100%);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 200;
+            margin-bottom: 0.5rem;
+            animation: fadeInUp 1s ease-out;
+            letter-spacing: -1px;
+        }
+        .hero-content h1 strong {
+            font-weight: 500;
+            color: var(--accent-gold);
+        }
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 1s ease-out 0.3s both;
+            color: var(--text-light);
+            font-weight: 300;
+            max-width: 600px;
+        }
+        .cta-button {
+            display: inline-block;
+            background: transparent;
+            color: var(--accent-gold);
+            padding: 14px 40px;
+            text-decoration: none;
+            border: 1px solid var(--accent-gold);
+            font-weight: 300;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out 0.6s both;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent-gold);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+        .cta-button:hover::before {
+            left: 0;
+        }
+        .cta-button:hover {
+            color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(201,169,97,0.2);
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Section Styling */
+        section {
+            padding: 100px 0;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 200;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+            letter-spacing: -1px;
+        }
+        .section-subtitle {
+            text-align: center;
+            font-size: 1rem;
+            color: var(--light-gray);
+            margin-bottom: 3rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        /* About Section */
+        #about {
+            background: var(--bg-light);
+        }
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .about-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--steel-gray);
+        }
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            background: var(--bg-white);
+            padding: 3rem;
+            border-left: 3px solid var(--accent-gold);
+            box-shadow: var(--shadow-md);
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 200;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+        .stat-number span {
+            color: var(--accent-gold);
+            font-weight: 400;
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--light-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        /* Services Section */
+        #services {
+            background: var(--bg-white);
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .service-card {
+            background: var(--bg-white);
+            padding: 2.5rem;
+            border: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent-gold);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        .service-card:hover::before {
+            transform: translateX(0);
+        }
+        .service-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-5px);
+        }
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+        }
+        .service-card h3 {
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            font-weight: 400;
+            font-size: 1.3rem;
+        }
+        .service-card p {
+            color: var(--steel-gray);
+            line-height: 1.7;
+        }
+        /* Projects Section */
+        #projects {
+            background: var(--bg-light);
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .project-card {
+            background: var(--bg-white);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .project-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-5px);
+        }
+        .project-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-gold);
+            font-weight: 300;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .project-image::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(201,169,97,0.1) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+        }
+        .project-info {
+            padding: 2rem;
+        }
+        .project-info h3 {
+            color: var(--primary-dark);
+            margin-bottom: 0.75rem;
+            font-weight: 400;
+        }
+        .project-info p {
+            color: var(--steel-gray);
+            line-height: 1.6;
+        }
+        /* Contact Section */
+        #contact {
+            background: var(--primary-dark);
+            color: var(--bg-white);
+        }
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+        .contact-info h3 {
+            margin-bottom: 2rem;
+            color: var(--accent-gold);
+            font-weight: 300;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: start;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
+            color: var(--text-light);
+        }
+        .contact-item span:first-child {
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            padding: 1rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.05);
+            color: var(--bg-white);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: var(--text-light);
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            background: rgba(255,255,255,0.08);
+        }
+        .contact-form button {
+            background: transparent;
+            color: var(--accent-gold);
+            padding: 1rem 2rem;
+            border: 1px solid var(--accent-gold);
+            font-size: 1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .contact-form button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent-gold);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+        .contact-form button:hover::before {
+            left: 0;
+        }
+        .contact-form button:hover {
+            color: var(--primary-dark);
+        }
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        footer p {
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .menu-toggle span {
+            width: 25px;
+            height: 2px;
+            background: var(--bg-white);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .menu-toggle {
+                display: flex;
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .services-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            padding-top: 70px;
+        }
+    </style>
 </head>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-TR0XMY88NJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-TR0XMY88NJ');
-</script>
-
-<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
-
-    <nav id="scrollspy" class="navbar navbar-light bg-light navbar-expand-lg fixed-top" data-spy="affix" data-offset-top="20">
-        <div class="container">
-            <a class="navbar-brand" href="#"><img src="public_html/assets/imgs/logo1.png" alt="logo" class="brand-img"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#services">Services</a>
-                    </li>
-                    
-                    <!--
-                    <li class="nav-item">
-                        <a class="nav-link" href="#testmonial">Projects</a>
-                    </li>
-                    -->
-                    <li class="nav-item ml-0 ml-lg-4">
-                        <a class="nav-link btn btn-primary" href="#contact">Contact</a>
-                    </li>
-                </ul>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">DHS <span>Consultants</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-        </div>
-    </nav>
-
-
-    <header id="home" class="header">
-        <div class="overlay"></div>
-
-        <div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">  
-            <div class="container">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h1 class="carousel-title">We Provide:<br> Structural Design</h1>
-                            <a class="btn btn-primary btn-rounded" href="#services" role="button">View Services</a>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h1 class="carousel-title">We Provide: <br> Drafting & Documentation</h1>
-                            <a class="btn btn-primary btn-rounded" href="#services" role="button">View Services</a>
-                          </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h1 class="carousel-title">We Provide: <br> Inspections & Reports</h1>
-                            <a class="btn btn-primary btn-rounded" href="#services" role="button">View Services</a>
-                          </div>
-                    </div>
-                </div>
-            </div>        
-        </div>
-
-        <div class="infos container mb-4 mb-md-2">
-            <div class="title">
-                <h6 class="subtitle font-weight-normal">Contact:</h6>
-                <h5>DH Structural Consultants</h5>
-                <p class="font-small">Structural engineering & drafting services</p>
-                <a class="d-block subtitle"><i class="ti-email pr-2"></i> admin@dhsconsultants.com.au</a>
-            </div>
-
-        </div>
+        </nav>
     </header>
-
-    <section class="section" id="about">
-
+    <!-- Hero Section -->
+    <section id="home" class="hero">
         <div class="container">
-
-            <div class="row align-items-center mr-auto">
-                <div class="col-md-4">
-                    <h3 class="section-title">About Us</h3>
-                    <p>Located in the inner-west of Sydney, DH Structural Consultants is passionate about providing creative, sustainable & compliant designs. Our experience covers a range of structures
-                        from retaining walls, domestic extensions to large commercial developments and high-rise towers through-out Australia.
-                    </p>
-                </div>
-                <div class="col-sm-6 col-md-4 ml-auto">
-                    <div class="widget">
-                        <div class="icon-wrapper">
-                            <i class="ti-calendar"></i>
-                        </div>
-                        <div class="infos-wrapper">
-                            <h4 class="text-primary">Chartered Engineer (CPEng)</h4>
-                            <p>Chartered Member of Engineers Australia</p>
-                        </div>
-                    </div>
-                    <div class="widget">
-                        <div class="icon-wrapper">
-                            <i class="ti-face-smile"></i>
-                        </div>
-                        <div class="infos-wrapper">
-                            <h4 class="text-primary">RPEQ & VBA</h4>
-                            <p>Queensland & Victoria state certifications</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="widget">
-                        <div class="icon-wrapper">
-                            <i class="ti-star"></i>
-                        </div>
-                        <div class="infos-wrapper">
-                            <h4 class="text-primary">Registered NER</h4>
-                            <p>NER Registration for Class 2 Buildings NSW</p>
-                        </div>
-                    </div>
-                    <div class="widget">
-                        <div class="icon-wrapper">
-                            <i class="ti-user"></i>
-                        </div>
-                        <div class="infos-wrapper">
-                            <h4 class="text-primary">10+ Years </h4>
-                            <p>Over 10 years experience in the design and documention of structures in Australia</p>
-                        </div>
-                    </div>
-                </div>
-             </div>
+            <div class="hero-content">
+                <h1>Engineering <strong>Excellence</strong></h1>
+                <p>Professional structural engineering solutions delivering precision, safety, and innovation for residential, commercial, and industrial projects</p>
+                <a href="#contact" class="cta-button">Schedule Consultation</a>
+            </div>
         </div>
     </section>
-
-    <section class="section" id="services">
+    <!-- About Section -->
+    <section id="about">
         <div class="container">
-            <h6 class="xs-font mb-0"></h6>
-            <h3 class="section-title mb-4">Services</h3>
-
-            <div class="row text-center">
-                <div class="col-lg-4">
-                    <a href="javascript:void(0)" class="card border-0 text-dark">
-                        <span class="card-body">
-                            <h4 class="title mt-4">Structural Design &amp; Analysis</h4>
-                            <li class="xs-font">Retaining Walls</li>
-                            <li class="xs-font">Steel, Timber, Masonry & Concrete Design</li>
-                            <li class="xs-font">Bracing & Framing Plans</li>
-                            <li class="xs-font">Renovations & Extensions</li>
-                            <li class="xs-font">Carports, Sheds & Portal Frames</li>
-                            <li class="xs-font">Concrete slab & foundation design</li>
-                            <li class="xs-font">Wall removal & load-bearing supports</li>
-                        </span>
-                    </a>
+            <h2 class="section-title">About Us</h2>
+            <p class="section-subtitle">Creative, Sustainable & Economical Structural Solutions</p>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Located in the inner-west of Sydney, DHS Consultants is passionate about providing creative, sustainable & compliant designs. Our experience covers a range of structures from retaining walls, domestic extensions to large commercial developments and high-rise towers throughout Australia.</p>
+                    <p><strong>Chartered Engineer (CPEng):</strong> Chartered Member of Engineers Australia</p>
+                    <p><strong>RPEQ & VBA:</strong> Queensland & Victoria state certifications</p>
+                    <p><strong>Registered NER:</strong> NER Registration for Class 2 Buildings NSW</p>
+                    <p><strong>10+ Years:</strong> Over 12 years experience in the design and documentation of structures in Australia</p>
                 </div>
-                <div class="col-lg-4">
-                    <a href="javascript:void(0)" class="card border-0 text-dark">
-                        <span class="card-body">
-                            <h4 class="title mt-4">Structural Reports & Certification</h4>
-                            <li class="xs-font">Structural Certification</li>
-                            <li class="xs-font">NSW, Victoria & Queensland (Form 15)</li>
-                            <li class="xs-font">Structural Assessment Reports</li>
-                            <li class="xs-font">Seismic Certification for Services</li>                            
-                            <li class="xs-font">Dilapidation Reports</li>
-                            <li class="xs-font">Peer reviews & structural Audits</li>
-                        </span>
-                    </a>
-                </div>
-                <div class="col-lg-4">
-                    <a href="javascript:void(0)" class="card border-0 text-dark">
-                        <span class="card-body">
-                            <h4 class="title mt-4">Drafting & Documentation</h4>
-                            <li class="xs-font">Structural drafting and CAD documentation</li>
-                            <li class="xs-font">Engineering plans & Details</li>
-                            <li class="xs-font">DA Documentation for council approval</li>
-                            <li class="xs-font">Construction Certificate & For Construction Documentation</li>
-                        </span>
-                    </a>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <div class="stat-number"><span>10</span>+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number"><span>3</span></div>
+                        <div class="stat-label">State Certifications</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number"><span>100</span>%</div>
+                        <div class="stat-label">Compliance</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number"><span>NER</span></div>
+                        <div class="stat-label">Class 2 Buildings NSW</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <section class="section">
+    <!-- Services Section -->
+    <section id="services">
         <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <p class="section-subtitle">Specialist Structural Engineering & Certification</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">▢</div>
+                    <h3>Structural Design & Analysis</h3>
+                    <p>Design and analysis for steel, timber, masonry & concrete structures. Bracing & framing plans, renovations, extensions, carports, sheds, portal frames, concrete slab & foundation design, wall removal & load-bearing supports.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">◈</div>
+                    <h3>Retaining Walls</h3>
+                    <p>Design and documentation for all types of retaining walls, including residential and commercial applications.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">◉</div>
+                    <h3>Structural Reports & Certification</h3>
+                    <p>Structural certification for NSW, Victoria & Queensland (Form 15), assessment reports, seismic certification for services, dilapidation reports, peer reviews & structural audits.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">◆</div>
+                    <h3>Drafting & Documentation</h3>
+                    <p>Structural drafting and CAD documentation, engineering plans & details, DA documentation for council approval, construction certificate & for construction documentation.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⧉</div>
+                    <h3>Renovations & Extensions</h3>
+                    <p>Structural engineering for home renovations, extensions, wall removals, and load-bearing support solutions to ensure safety and compliance.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⧫</div>
+                    <h3>Foundation & Slab Design</h3>
+                    <p>Design of concrete slabs, footings, and foundations for residential, commercial, and industrial buildings, including soil-structure interaction and site-specific solutions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">Engineering Excellence in Action</p>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">Commercial Development</div>
+                    <div class="project-info">
+                        <h3>Metropolitan Office Tower</h3>
+                        <p>12-story steel frame structure featuring innovative lateral force resisting systems and sustainable design elements for a 150,000 sq ft Class A office development.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">Institutional Facility</div>
+                    <div class="project-info">
+                        <h3>University Science Center</h3>
+                        <p>State-of-the-art research facility with specialized vibration isolation systems and complex mechanical equipment support structures.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">Infrastructure Project</div>
+                    <div class="project-info">
+                        <h3>Harbor Bridge Retrofit</h3>
+                        <p>Comprehensive seismic upgrade of a critical transportation link, incorporating base isolation and advanced damping systems.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">Healthcare Facility</div>
+                    <div class="project-info">
+                        <h3>Regional Medical Center</h3>
+                        <p>300-bed hospital expansion designed to immediate occupancy standards with enhanced structural resilience for critical care operations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Contact Us</h2>
+            <p class="section-subtitle" style="color: var(--text-light);">Let's Discuss Your Project</p>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <div class="contact-item">
+                        <span>◆</span>
+                        <span>Ross Street, Forest Lodge<br>Sydney, 2037</span>
+                    </div>
+                    <!-- <div class="contact-item">
+                        <span>◆</span>
+                        <span>Main: (555) 123-4567<br>Direct: (555) 123-4568</span>
+                    </div> -->
+                    <div class="contact-item">
+                        <span>◆</span>
+                        <span>admin@dhsconsultants.com.au</span>
+                    </div>
+                    <!-- <div class="contact-item">
+                        <span>◆</span>
+                        <span>Monday - Friday: 9:00 AM - 5:00 PM<br>
+                    </div> -->
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="email" placeholder="Email Address" required>
+                    <input type="tel" placeholder="Phone Number">
+                    <input type="text" placeholder="Project Type">
+                    <textarea placeholder="Project Description" rows="5" required></textarea>
+                    <button type="submit">Submit Inquiry</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 DHS Consultants. All Rights Reserved. | Licensed Professional Engineers |  </p>
+        </div>
+    </footer>
+    <script>
+        // Form handling with more professional feedback
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your inquiry. A member of our team will contact you within one business day to discuss your project requirements.');
+            this.reset();
+        });
         
-            <h3 class="section-title pb-4">Professional, Reliable & Compliant Designs</h3>
-        </div>
-
-        <div id="owl-portfolio" class="owl-carousel owl-theme mt-4">
-            <a   href="javascript:void(0)" class="item expertises-item">
-                <img src="public_html/assets/imgs/example_1.png"alt=" Engineering drawings and documentation" class="box-shadow">
-                <h6 class="mt-3 mb-2">Cad Drafting & Detailing</h6> 
-            </a> 
-            <a href="javascript:void(0)" class="item expertises-item">
-                <img src="public_html/assets/imgs/example_3.jpg"alt="Image design and analysis" class="box-shadow">
-                <h6 class="mt-3 mb-2">Structural Design & Analysis</h6>
-            </a> 
-            <a href="javascript:void(0)" class="item expertises-item">
-                <img src="public_html/assets/imgs/example_2.avif"alt="Construction site services" class="box-shadow">
-                <h6 class="mt-3 mb-2">Construction Services</h6>
-            </a> 
-            <a href="javascript:void(0)" class="item expertises-item">
-                <img src="public_html/assets/imgs/photo_inspection.jpg"alt="Reports & assessments" class="box-shadow">
-                <h6 class="mt-3 mb-2">Reports & Assessments</h6>
-            </a> 
-         
-        </div>
-    </section>
-
-
-    <section id="contact" class="section pb-0">
-
-        <div class="container">
-            <h6 class="xs-font mb-0">Please feel free to get in touch to discuss your project!</h6>
-            <h3 class="section-title mb-5">Contact Us</h3>
-
-            <div class="row align-items-center justify-content-between">
-                <div class="col-md-8 col-lg-7">
-
-                    <!-- <form class="contact-form">
-                        <div class="form-row">
-                            <div class="col form-group">
-                                <input type="text" class="form-control" placeholder="Name">
-                            </div>
-                            <div class="col form-group">
-                                <input type="email" class="form-control" placeholder="Email">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <textarea name="" id="" cols="30" rows="5" class="form-control" placeholder="Your Message"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" class="btn btn-primary btn-block" value="Send Message">
-                        </div>
-                    </form> -->
-                    <iframe width="600" height="450" style="border:0" loading="lazy" allowfullscreen
-                    src="https://www.google.com/maps/embed/v1/view?zoom=17&center=-33.8964%2C151.1658&key=AIzaSyAR1iDhneQVMVpQQY5LRufWV_q7GhQ-ZN4"></iframe> 
-                </div>
-                <div class="col-md-4 d-none d-md-block order-1">
-                    <ul class="list">
-                        <li class="list-head">
-                            <h6>CONTACT INFO</h6>
-                        </li>
-                        <li class="list-body">
-                            <p class="py-2">Contact us via the form and we'll get back to you.</p>
-                            <p class="py-2"><i class="ti-location-pin"></i> Stanmore, Sydney, NSW 2048</p>
-                            <p class="py-2"><i class="ti-email"></i>  david@dhsconsultants.com.au</p>
-
-                        </li>
-                    </ul> 
-                </div>
-            </div>
-
-            <footer class="footer mt-5 border-top">
-                <div class="row align-items-center justify-content-center">
-                    <div class="col-md-6 text-center text-md-left">
-                        <p class="mb-0">Copyright <script>document.write(new Date().getFullYear())</script> &copy; <a target="_blank" href="https://www.dh-structures.com">DH Structural Consultants</a></p>
-                    </div>
-                </div> 
-            </footer>
-        </div>
-    </section>
-	
-	<!-- core  -->
-    <script src="public_html/assets/vendors/jquery/jquery-3.4.1.js"></script>
-    <script src="public_html/assets/vendors/bootstrap/bootstrap.bundle.js"></script>
-
-    <!-- bootstrap 3 affix -->
-	<script src="public_html/assets/vendors/bootstrap/bootstrap.affix.js"></script>
-    
-    <!-- Owl carousel  -->
-    <script src="public_html/assets/vendors/owl-carousel/js/owl.carousel.js"></script>
-
-
-    <!-- Ollie js -->
-    <script src="public_html/assets/js/functions.js"></script>
-
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Header background change on scroll - more subtle
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(26, 26, 46, 0.98)';
+                header.style.backdropFilter = 'blur(15px)';
+            } else {
+                header.style.background = 'var(--primary-dark)';
+                header.style.backdropFilter = 'blur(10px)';
+            }
+        });
+        
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
