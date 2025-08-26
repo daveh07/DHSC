@@ -55,16 +55,16 @@
             align-items: center;
         }
         .logo {
-            font-size: 1.5rem;
+            font-family: 'Georgia', serif;
+            font-size: 1.8rem;
             font-weight: 300;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             color: var(--bg-white);
-            text-transform: uppercase;
         }
-        .logo span {
-            color: var(--accent-gold);
-            font-weight: 500;
-        }
+        .logo .d { color: var(--accent-gold); }
+        .logo .h { color: var(--bg-white); }
+        .logo .s { color: var(--accent-gold); }
+        .logo .c { color: var(--bg-white); }
         .nav-links {
             display: flex;
             list-style: none;
@@ -122,11 +122,20 @@
             position: relative;
             z-index: 1;
         }
+        .hero-content .company-name {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: var(--accent-gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
         .hero-content h1 {
             font-size: 3.5rem;
             font-weight: 200;
             margin-bottom: 0.5rem;
-            animation: fadeInUp 1s ease-out;
+            animation: fadeInUp 1s ease-out 0.2s both;
             letter-spacing: -1px;
         }
         .hero-content h1 strong {
@@ -309,62 +318,69 @@
             color: var(--steel-gray);
             line-height: 1.7;
         }
-        /* Projects Section */
-        #projects {
+        /* Expertise Section */
+        #expertise {
             background: var(--bg-light);
         }
-        .projects-grid {
+        .expertise-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
-        .project-card {
+        .expertise-card {
             background: var(--bg-white);
-            overflow: hidden;
+            padding: 2.5rem;
+            text-align: center;
             box-shadow: var(--shadow-sm);
             transition: all 0.3s ease;
             position: relative;
+            overflow: hidden;
+            border-top: 3px solid var(--accent-gold);
         }
-        .project-card:hover {
+        .expertise-card:hover {
             box-shadow: var(--shadow-lg);
             transform: translateY(-5px);
         }
-        .project-image {
-            height: 200px;
+        .expertise-icon {
+            width: 80px;
+            height: 80px;
             background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--accent-gold);
-            font-weight: 300;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            position: relative;
-            overflow: hidden;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
         }
-        .project-image::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(201,169,97,0.1) 0%, transparent 70%);
-            transform: translate(-50%, -50%);
-        }
-        .project-info {
-            padding: 2rem;
-        }
-        .project-info h3 {
+        .expertise-card h3 {
             color: var(--primary-dark);
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
             font-weight: 400;
+            font-size: 1.3rem;
         }
-        .project-info p {
+        .expertise-card p {
             color: var(--steel-gray);
-            line-height: 1.6;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        .expertise-list {
+            list-style: none;
+            text-align: left;
+        }
+        .expertise-list li {
+            color: var(--steel-gray);
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.9rem;
+        }
+        .expertise-list li::before {
+            content: '◆';
+            color: var(--accent-gold);
+            position: absolute;
+            left: 0;
         }
         /* Contact Section */
         #contact {
@@ -490,7 +506,7 @@
                 gap: 2rem;
             }
             .services-grid,
-            .projects-grid {
+            .expertise-grid {
                 grid-template-columns: 1fr;
             }
             .about-stats {
@@ -510,12 +526,14 @@
     <!-- Header -->
     <header>
         <nav class="container">
-            <div class="logo">DHS <span>Consultants</span></div>
+            <div class="logo">
+                <span class="d">D</span><span class="h">H</span><span class="s">S</span><span class="c">C</span>
+            </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
-                <li><a href="#projects">Projects</a></li>
+                <li><a href="#expertise">Expertise</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="menu-toggle">
@@ -529,6 +547,7 @@
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
+                <div class="company-name">DHS Consultants</div>
                 <h1>Engineering <strong>Excellence</strong></h1>
                 <p>Professional structural engineering solutions delivering precision, safety, and innovation for residential, commercial, and industrial projects</p>
                 <a href="#contact" class="cta-button">Schedule Consultation</a>
@@ -608,39 +627,59 @@
             </div>
         </div>
     </section>
-    <!-- Projects Section -->
-    <section id="projects">
+    <!-- Expertise Section -->
+    <section id="expertise">
         <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <p class="section-subtitle">Engineering Excellence in Action</p>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">Commercial Development</div>
-                    <div class="project-info">
-                        <h3>Metropolitan Office Tower</h3>
-                        <p>12-story steel frame structure featuring innovative lateral force resisting systems and sustainable design elements for a 150,000 sq ft Class A office development.</p>
-                    </div>
+            <h2 class="section-title">Our Expertise</h2>
+            <p class="section-subtitle">Industry Standards & Building Codes Compliance</p>
+            <div class="expertise-grid">
+                <div class="expertise-card">
+                    <div class="expertise-icon">⚡</div>
+                    <h3>Building Codes & Standards</h3>
+                    <p>Full compliance with Australian Standards and Building Codes across all jurisdictions.</p>
+                    <ul class="expertise-list">
+                        <li>AS1170 - Structural Design Actions</li>
+                        <li>AS3600 - Concrete Structures</li>
+                        <li>AS4100 - Steel Structures</li>
+                        <li>AS1720 - Timber Structures</li>
+                        <li>NCC - National Construction Code</li>
+                    </ul>
                 </div>
-                <div class="project-card">
-                    <div class="project-image">Institutional Facility</div>
-                    <div class="project-info">
-                        <h3>University Science Center</h3>
-                        <p>State-of-the-art research facility with specialized vibration isolation systems and complex mechanical equipment support structures.</p>
-                    </div>
+                <div class="expertise-card">
+                    <div class="expertise-icon">🏗️</div>
+                    <h3>Project Types</h3>
+                    <p>Comprehensive structural solutions across residential, commercial and industrial sectors.</p>
+                    <ul class="expertise-list">
+                        <li>Single & Multi-storey Residential</li>
+                        <li>Commercial Office Buildings</li>
+                        <li>Industrial & Warehouse Facilities</li>
+                        <li>Retail & Mixed-use Developments</li>
+                        <li>Educational & Healthcare Facilities</li>
+                    </ul>
                 </div>
-                <div class="project-card">
-                    <div class="project-image">Infrastructure Project</div>
-                    <div class="project-info">
-                        <h3>Harbor Bridge Retrofit</h3>
-                        <p>Comprehensive seismic upgrade of a critical transportation link, incorporating base isolation and advanced damping systems.</p>
-                    </div>
+                <div class="expertise-card">
+                    <div class="expertise-icon">🔧</div>
+                    <h3>Software & Technology</h3>
+                    <p>Advanced engineering software for precise analysis and efficient project delivery.</p>
+                    <ul class="expertise-list">
+                        <li>ETABS - Structural Analysis</li>
+                        <li>SAFE - Foundation Design</li>
+                        <li>AutoCAD - Technical Drafting</li>
+                        <li>Revit - Building Information Modeling</li>
+                        <li>RAPT - Concrete Design Software</li>
+                    </ul>
                 </div>
-                <div class="project-card">
-                    <div class="project-image">Healthcare Facility</div>
-                    <div class="project-info">
-                        <h3>Regional Medical Center</h3>
-                        <p>300-bed hospital expansion designed to immediate occupancy standards with enhanced structural resilience for critical care operations.</p>
-                    </div>
+                <div class="expertise-card">
+                    <div class="expertise-icon">📋</div>
+                    <h3>Professional Certifications</h3>
+                    <p>Fully licensed and certified across multiple Australian states and territories.</p>
+                    <ul class="expertise-list">
+                        <li>CPEng - Engineers Australia</li>
+                        <li>RPEQ - Queensland Registration</li>
+                        <li>VBA - Victoria Building Authority</li>
+                        <li>NER - NSW Class 2 Buildings</li>
+                        <li>Professional Indemnity Insured</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -657,18 +696,10 @@
                         <span>◆</span>
                         <span>Ross Street, Forest Lodge<br>Sydney, 2037</span>
                     </div>
-                    <!-- <div class="contact-item">
-                        <span>◆</span>
-                        <span>Main: (555) 123-4567<br>Direct: (555) 123-4568</span>
-                    </div> -->
                     <div class="contact-item">
                         <span>◆</span>
                         <span>admin@dhsconsultants.com.au</span>
                     </div>
-                    <!-- <div class="contact-item">
-                        <span>◆</span>
-                        <span>Monday - Friday: 9:00 AM - 5:00 PM<br>
-                    </div> -->
                 </div>
                 <form class="contact-form">
                     <input type="text" placeholder="Full Name" required>
@@ -684,7 +715,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 DHS Consultants. All Rights Reserved. | Licensed Professional Engineers |  </p>
+            <p>&copy; 2025 DHS Consultants. All Rights Reserved. | Licensed Professional Engineers</p>
         </div>
     </footer>
     <script>
