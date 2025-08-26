@@ -701,12 +701,16 @@
                         <span>admin@dhsconsultants.com.au</span>
                     </div>
                 </div>
-                <form class="contact-form">
-                    <input type="text" placeholder="Full Name" required>
-                    <input type="email" placeholder="Email Address" required>
-                    <input type="tel" placeholder="Phone Number">
-                    <input type="text" placeholder="Project Type">
-                    <textarea placeholder="Project Description" rows="5" required></textarea>
+                <form class="contact-form" action="https://formsubmit.co/admin@dhsconsultants.com.au" method="POST">
+                    <input type="text" name="name" placeholder="Full Name" required>
+                    <input type="email" name="email" placeholder="Email Address" required>
+                    <input type="tel" name="phone" placeholder="Phone Number">
+                    <input type="text" name="project_type" placeholder="Project Type">
+                    <textarea name="message" placeholder="Project Description" rows="5" required></textarea>
+                    <!-- Hidden fields for FormSubmit configuration -->
+                    <input type="hidden" name="_subject" value="New Inquiry from DHSC Website">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="https://dhsconsultants.com.au/thank-you.html">
                     <button type="submit">Submit Inquiry</button>
                 </form>
             </div>
@@ -719,11 +723,12 @@
         </div>
     </footer>
     <script>
-        // Form handling with more professional feedback
+        // Form handling - now uses FormSubmit.co
         document.querySelector('.contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your inquiry. A member of our team will contact you within one business day to discuss your project requirements.');
-            this.reset();
+            // Remove the preventDefault since we want the form to actually submit
+            // e.preventDefault();
+            // The form will now submit to FormSubmit.co and send you an email
+            // You can add a loading indicator here if desired
         });
         
         // Smooth scroll for navigation links
