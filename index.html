@@ -701,7 +701,7 @@
                         <span>david@dhsconsultants.com.au</span>
                     </div>
                 </div>
-              <form class="contact-form" action="https://formsubmit.co/david@dhsconsultants.com.au" method="POST">
+                <form class="contact-form" action="https://formsubmit.co/david@dhsconsultants.com.au" method="POST" onsubmit="showAlert(event)">
                     <input type="text" name="name" placeholder="Full Name" required>
                     <input type="email" name="email" placeholder="Email Address" required>
                     <input type="tel" name="phone" placeholder="Phone Number">
@@ -710,9 +710,19 @@
                     <!-- Hidden fields for FormSubmit configuration -->
                     <input type="hidden" name="_subject" value="New Inquiry from DHSC Website">
                     <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_next" value="https://dhsconsultants.com.au/thank-you.html">
+                    <input type="hidden" name="_next" value="https://dhsconsultants.com.au">
                     <button type="submit">Submit Inquiry</button>
                 </form>
+                
+                <script>
+                    function showAlert(event) {
+                        event.preventDefault();  // Prevent the form from submitting immediately
+                        alert("Thank you, your enquiry has been submitted. We will review the information provided and get back to you shortly.");
+                        
+                        // After the alert, submit the form manually
+                        event.target.submit();
+                    }
+                </script>
             </div>
         </div>
     </section>
